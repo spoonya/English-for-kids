@@ -139,19 +139,21 @@
 
 .header__menu {
   position: fixed;
+  z-index: 2000;
   top: 0;
   left: 0;
 
-  display: none;
   flex-direction: column;
 
   min-width: 20%;
   min-height: 100vh;
   padding: 3rem 0;
 
-  background-color: $color-primary-light;
+  background-color: $color-primary-dark;
 
   .header__burger {
+    margin: 0 auto;
+
     transform: rotate(90deg);
 
     .header__burger-line {
@@ -175,11 +177,42 @@
 .header__menu-link {
   font-size: 2rem;
 
+  position: relative;
+
+  padding-bottom: .5rem;
+
   transition: color .1s linear;
 
-  color: $color-primary-dark;
+  color: $color-primary-light;
 
   &:hover {
-    color: $color-primary-dark;
+    color: $color-secondary-light;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+
+    display: block;
+
+    width: 100%;
+    height: .3rem;
+
+    content: '';
+    transition: .1s linear;
+
+    opacity: 0;
+    background: $color-secondary-light;
+  }
+
+  &--active {
+    &:hover {
+      color: $color-primary-light;
+    }
+
+    &::after {
+      opacity: 1;
+    }
   }
 }

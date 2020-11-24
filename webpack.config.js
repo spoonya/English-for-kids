@@ -115,7 +115,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'img',
+              outputPath: 'assets/img',
               name: '[name].[ext]',
             },
           },
@@ -164,7 +164,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'assets',
+              outputPath: 'assets/sounds',
               name: '[name].[ext]',
             },
           },
@@ -182,8 +182,8 @@ const config = {
       filename: './index.html',
     }),
     new CopyWebpackPlugin([
-      // {from: './src/static', to: './'},
-      // {from: './src/img', to: './img/'},
+      // { from: './src/static', to: './' },
+      // { from: './src/assets/img/category', to: './assets/img/category' },
     ]),
   ],
 

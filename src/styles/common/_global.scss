@@ -82,10 +82,11 @@ body {
 
   margin: 0;
 
+  user-select: none;
+
   color: $color-primary-dark;
   background: #da22ff;
-  background: -webkit-linear-gradient(to right, #9733ee, #da22ff);
-  background:         linear-gradient(to right, #9733ee, #da22ff);
+  background: linear-gradient(to right, #9733ee, #da22ff);
 }
 
 .container {
@@ -100,4 +101,36 @@ body {
   flex-direction: column;
 
   min-height: 100vh;
+
+  &--blackout {
+    &::after {
+      position: absolute;
+      z-index: 1500;
+      top: 0;
+      left: 0;
+
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      content: '';
+      cursor: pointer;
+
+      background: rgba($color-primary-dark, .25);
+    }
+  }
 }
+
+.visible {
+  display: block;
+}
+
+.hidden-visual {
+  visibility: hidden;
+}
+
+.hidden-phys {
+  display: none;
+}
+

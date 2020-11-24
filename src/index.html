@@ -17,20 +17,20 @@
           <button class="header__burger" data-menu-open>
             <span class="header__burger-line"></span>
           </button>
-          <nav class="header__menu">
+          <nav class="header__menu hidden-phys">
             <button class="header__burger" data-menu-close>
               <span class="header__burger-line header__burger-line--active"></span>
             </button>
             <ul class="header__menu-list">
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Main page</a></li>
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Action</a></li>
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Food</a></li>
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Action</a></li>
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Body</a></li>
-              <li class="header__menu-item"><a href="#" class="header__menu-link">Home</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link header__menu-link--active">Main page</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link">Actions</a></li>
               <li class="header__menu-item"><a href="#" class="header__menu-link">Animals</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link">Body</a></li>
               <li class="header__menu-item"><a href="#" class="header__menu-link">Clothes</a></li>
               <li class="header__menu-item"><a href="#" class="header__menu-link">Emotions</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link">Food</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link">Home</a></li>
+              <li class="header__menu-item"><a href="#" class="header__menu-link">Nature</a></li>
             </ul>
           </nav>
           <h1 class="header__logo"> <span>English</span> for kids</h1>
@@ -38,10 +38,32 @@
             <input type="checkbox" checked="checked">
             <span class="header__control"></span>
           </label>
-
         </div>
       </div>
     </header>
+
+    <main class="content">
+      <div class="container">
+        <h2 class="content__title">Main page</h2>
+        <div class="content__inner">
+          <div class="content__item">
+            <div class="content__item-top"></div>
+            <div class="content__item-mid">
+              <img class="content__item-img" src="assets/img/actions/actions.jpg" alt="animal">
+              <h3 class="content__item-title">Actions</h3>
+            </div>
+          </div>
+
+          <div class="content__item">
+            <div class="content__item-top"></div>
+            <div class="content__item-mid">
+              <img class="content__item-img" src="assets/img/nature/nature.jpg" alt="animal">
+              <h3 class="content__item-title">Animals</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </body>
 
