@@ -1,12 +1,14 @@
 import '../styles/style.scss';
-import Header from './components/header.component';
-import Images from './data/images.data';
+import HeaderComponent from './components/header.component';
+import CategoryComponent from './components/category.component';
 
-export const header: Header = new Header();
-export const images: object = new Images().importImages();
+export const header: HeaderComponent = new HeaderComponent();
+export const categories: CategoryComponent = new CategoryComponent();
 
 const init = (): void => {
   header.initHeader();
+
+  categories.createCategories();
 };
 
 init();

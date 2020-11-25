@@ -1,6 +1,6 @@
-import selectors from '../constants/selectors.const';
+import SELECTORS from '../constants/selectors.const';
 
-export default class Header {
+export default class HeaderComponent {
   private animationSetup = {
     duration: 250,
     easing: 'ease-in-out',
@@ -8,7 +8,7 @@ export default class Header {
   };
 
   private activateAnime = (onClose: boolean = false): void => {
-    const chooseAnimeDirection = () => {
+    const chooseAnimeDirection = (): any => {
       if (!onClose) {
         return [
           {
@@ -29,7 +29,7 @@ export default class Header {
       ];
     };
 
-    selectors.DOM.menu?.animate(chooseAnimeDirection(), {
+    SELECTORS.DOM.menu?.animate(chooseAnimeDirection(), {
       duration: this.animationSetup.duration,
       easing: this.animationSetup.easing,
       iterations: this.animationSetup.iterations,
@@ -37,30 +37,31 @@ export default class Header {
   };
 
   private openMenu = (): void => {
-    selectors.DOM.menu?.classList.remove(selectors.styles.hiddenPhys);
+    SELECTORS.DOM.menu?.classList.remove(SELECTORS.styles.hiddenPhys);
     this.activateAnime();
-    selectors.DOM.openMenuBtn?.classList.add(selectors.styles.hiddenVisual);
-    selectors.DOM.page?.classList.add(selectors.styles.blackout);
+    SELECTORS.DOM.openMenuBtn?.classList.add(SELECTORS.styles.hiddenVisual);
+    SELECTORS.DOM.page?.classList.add(SELECTORS.styles.blackout);
+    SELECTORS.DOM.body?.classList.add(SELECTORS.styles.scrollHidden);
   };
 
   private closeMenu = (): void => {
     this.activateAnime(true);
-    selectors.DOM.openMenuBtn?.classList.remove(selectors.styles.hiddenVisual);
-    selectors.DOM.page?.classList.remove(selectors.styles.blackout);
+    SELECTORS.DOM.openMenuBtn?.classList.remove(SELECTORS.styles.hiddenVisual);
+    SELECTORS.DOM.page?.classList.remove(SELECTORS.styles.blackout);
+    SELECTORS.DOM.body?.classList.remove(SELECTORS.styles.scrollHidden);
 
     setTimeout(() => {
-      selectors.DOM.menu?.classList.add(selectors.styles.hiddenPhys);
+      SELECTORS.DOM.menu?.classList.add(SELECTORS.styles.hiddenPhys);
     }, this.animationSetup.duration - 10);
   };
 
   public initHeader = (): void => {
-    selectors.DOM.openMenuBtn?.addEventListener('click', this.openMenu);
-    selectors.DOM.closeMenuBtn?.addEventListener('click', this.closeMenu);
-    // Blackout
+    SELECTORS.DOM.openMenuBtn?.addEventListener('click', this.openMenu);
+    SELECTORS.DOM.closeMenuBtn?.addEventListener('click', this.closeMenu);
     document.addEventListener('click', (e) => {
       const { target } = e;
 
-      if (selectors.DOM.page?.classList.contains('page--blackout') && target === selectors.DOM.page) {
+      if (SELECTORS.DOM.page?.classList.contains(SELECTORS.styles.blackout) && target === SELECTORS.DOM.page) {
         this.closeMenu();
       }
     });

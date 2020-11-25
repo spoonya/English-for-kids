@@ -19,16 +19,13 @@
 
   padding: 1.3rem 0;
 
-  transition: transform .5s linear;
-
   .header__burger-line {
     position: relative;
 
     width: 3rem;
     height: .3rem;
 
-    content: '';
-    transform: rotate(180deg);
+    transition: background-color .1s linear;
 
     background: $color-primary-light;
 
@@ -47,7 +44,7 @@
       background: inherit;
     }
 
-    &:after {
+    &::after {
       position: absolute;
       top: 1rem;
       right: 0;
@@ -143,29 +140,63 @@
   top: 0;
   left: 0;
 
-  flex-direction: column;
-
   min-width: 20%;
+  max-width: 320px;
   min-height: 100vh;
   padding: 3rem 0;
 
   background-color: $color-primary-dark;
+}
 
-  .header__burger {
-    margin: 0 auto;
+.header__menu-img {
+  max-width: 90%;
+  max-height: 50px;
+  margin: 0 auto;
 
-    transform: rotate(90deg);
+  object-fit: cover;
+}
 
-    .header__burger-line {
-      &--active {
-        background: $color-secondary-light;
-      }
+.header__close {
+  position: absolute;
+  top: 0;
+  right: -32px;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: $color-secondary-light;
+
+  &:hover {
+    &::before,
+    &::after {
+      background-color: $color-primary-light;
     }
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 15px;
+
+    width: 2px;
+    height: 33px;
+
+    content: ' ';
+    transition: background-color .1s linear;
+
+    background-color: $color-primary-dark;
+  }
+  &::before {
+    transform: rotate(45deg);
+  }
+  &::after {
+    transform: rotate(-45deg);
   }
 }
 
 .header__menu-list {
-  padding: 10rem 5rem;
+  padding: 4rem 5rem;
 }
 
 .header__menu-item {

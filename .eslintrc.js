@@ -41,7 +41,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
   },
 };
