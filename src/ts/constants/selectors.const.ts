@@ -1,10 +1,10 @@
-const SELECTORS = {
+const SELECTORS: any = {
   styles: {
     hiddenVisual: 'hidden-visual',
     hiddenPhys: 'hidden-phys',
     visible: 'visible',
     blackout: 'page--blackout',
-    scrollHidden: 'scroll-hidden',
+    scrollOff: 'scroll-hidden',
   },
   DOM: {
     body: document.querySelector('body'),

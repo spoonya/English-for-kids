@@ -1,7 +1,7 @@
 import SELECTORS from '../constants/selectors.const';
 
 export default class HeaderComponent {
-  private animationSetup = {
+  private animationSetup: { duration: number; easing: string; iterations: number } = {
     duration: 250,
     easing: 'ease-in-out',
     iterations: 1,
@@ -41,14 +41,14 @@ export default class HeaderComponent {
     this.activateAnime();
     SELECTORS.DOM.openMenuBtn?.classList.add(SELECTORS.styles.hiddenVisual);
     SELECTORS.DOM.page?.classList.add(SELECTORS.styles.blackout);
-    SELECTORS.DOM.body?.classList.add(SELECTORS.styles.scrollHidden);
+    SELECTORS.DOM.body?.classList.add(SELECTORS.styles.scrollOff);
   };
 
   private closeMenu = (): void => {
     this.activateAnime(true);
     SELECTORS.DOM.openMenuBtn?.classList.remove(SELECTORS.styles.hiddenVisual);
     SELECTORS.DOM.page?.classList.remove(SELECTORS.styles.blackout);
-    SELECTORS.DOM.body?.classList.remove(SELECTORS.styles.scrollHidden);
+    SELECTORS.DOM.body?.classList.remove(SELECTORS.styles.scrollOff);
 
     setTimeout(() => {
       SELECTORS.DOM.menu?.classList.add(SELECTORS.styles.hiddenPhys);

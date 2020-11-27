@@ -2,7 +2,7 @@ import ImagesData from './images.data';
 
 const images = new ImagesData().importImages();
 
-const CATEGORIES = [
+const CATEGORIES: any[] = [
   {
     title: 'Actions',
     img: images.categories['actions.jpg'],
