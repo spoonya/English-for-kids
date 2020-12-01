@@ -68,7 +68,7 @@
 .content__topic-item-word {
   font-weight: 600;
 
-  color: $color-secondary-light;
+  color: darken($color-secondary-light, 3);
 
   &::first-letter {
     text-transform: uppercase;

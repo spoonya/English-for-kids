@@ -216,6 +216,10 @@
 
   color: $color-primary-light;
 
+  &:first-letter {
+    text-transform: uppercase;
+  }
+
   &:hover {
     color: $color-secondary-light;
   }

@@ -1,8 +1,8 @@
-import ImagesData from './images.data';
+import AssetsData from './assets.data';
 
-const images = new ImagesData().importImages();
+const images = new AssetsData().importImages();
 
-const CATEGORIES: any[] = [
+const CATEGORIES_DATA: any[] = [
   {
     title: 'Actions',
     img: images.categories['actions.jpg'],
@@ -45,4 +45,4 @@ const CATEGORIES: any[] = [
   },
 ];
 
-export default CATEGORIES;
+export default CATEGORIES_DATA;

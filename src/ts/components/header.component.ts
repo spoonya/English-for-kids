@@ -1,4 +1,11 @@
 import SELECTORS from '../constants/selectors.const';
+import CARDS_DATA from '../data/cards.data';
+import CardComponent from './card.component';
+import clearContent from '../helpers/content-clear';
+import chooseActiveLink from '../helpers/active-category';
+import { categories } from '../index';
+
+const cards: CardComponent = new CardComponent();
 
 export default class HeaderComponent {
   private animationSetup: { duration: number; easing: string; iterations: number } = {
@@ -58,6 +65,23 @@ export default class HeaderComponent {
   public initHeader = (): void => {
     SELECTORS.DOM.openMenuBtn?.addEventListener('click', this.openMenu);
     SELECTORS.DOM.closeMenuBtn?.addEventListener('click', this.closeMenu);
+
+    SELECTORS.DOM.menuBtn.forEach((el: HTMLElement): any => {
+      el.addEventListener('click', () => {
+        const category: string = el.innerHTML.toLowerCase();
+        clearContent();
+        if (el.id === 'main-page') {
+          categories.initCategories();
+          SELECTORS.DOM.contentTitle.textContent = 'Main page';
+        } else {
+          SELECTORS.DOM.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
+          cards.initCards(CARDS_DATA[category]);
+        }
+        chooseActiveLink();
+        this.closeMenu();
+      });
+    });
+
     document.addEventListener('click', (e) => {
       const { target } = e;
 

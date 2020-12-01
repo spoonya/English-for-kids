@@ -1,7 +1,9 @@
-import CATEGORIES from '../data/categories.data';
-import CARDS from '../data/cards.data';
+import CATEGORIES_DATA from '../data/categories.data';
+import CARDS_DATA from '../data/cards.data';
 import SELECTORS from '../constants/selectors.const';
 import CardComponent from './card.component';
+import clearContent from '../helpers/content-clear';
+import chooseActiveLink from '../helpers/active-category';
 
 const cards: CardComponent = new CardComponent();
 
@@ -17,23 +19,20 @@ export default class CategoryComponent {
               </div>`;
     };
 
-    // SELECTORS.DOM.contentTitle.textContent = CATEGORIES[0].title;
-
-    for (let i = 0; i < CATEGORIES.length; i++) {
+    for (let i = 0; i < CATEGORIES_DATA.length; i++) {
       SELECTORS.DOM.content?.insertAdjacentHTML(
         'beforeend',
-        setupCard(CATEGORIES[i].img, CATEGORIES[i].title, CATEGORIES[i].id),
+        setupCard(CATEGORIES_DATA[i].img, CATEGORIES_DATA[i].title, CATEGORIES_DATA[i].id),
       );
     }
 
-    SELECTORS.DOM.content.querySelectorAll('.content__category-item').forEach((el: HTMLElement): any => {
+    SELECTORS.DOM.content.querySelectorAll(SELECTORS.DOM.categoriesStr).forEach((el: HTMLElement): any => {
       el.addEventListener('click', () => {
         const category = el.id;
-        SELECTORS.DOM.contentTitle.textContent = Object.keys(CARDS).find((key) => key === category);
-        while (SELECTORS.DOM.content.firstChild) {
-          SELECTORS.DOM.content.removeChild(SELECTORS.DOM.content.firstChild);
-        }
-        cards.initCards(CARDS[category]);
+        clearContent();
+        SELECTORS.DOM.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
+        chooseActiveLink();
+        cards.initCards(CARDS_DATA[category]);
       });
     });
   };

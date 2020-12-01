@@ -22,8 +22,6 @@ export default class CardComponent {
               </div>`;
     };
 
-    // SELECTORS.DOM.contentTitle.textContent = CATEGORIES[0].title;
-
     for (let i = 0; i < topic.length; i++) {
       SELECTORS.DOM.content?.insertAdjacentHTML(
         'beforeend',
