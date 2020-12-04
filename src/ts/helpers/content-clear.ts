@@ -1,8 +1,8 @@
 import SELECTORS from '../constants/selectors.const';
 
 const clearContent = (): void => {
-  while (SELECTORS.DOM.content.firstChild) {
-    SELECTORS.DOM.content.removeChild(SELECTORS.DOM.content.firstChild);
+  while (SELECTORS.dom.content.firstChild) {
+    SELECTORS.dom.content.removeChild(SELECTORS.dom.content.firstChild);
   }
 };
 

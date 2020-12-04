@@ -1,0 +1,29 @@
+.footer {
+  padding: 10px 0;
+
+  background-color: $color-primary-dark;
+}
+
+.footer__info {
+  font-style: normal;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: $color-primary-light;
+}
+
+.footer__link {
+  margin: 0 5px;
+
+  color: $color-secondary-light;
+}
+
+.footer__img {
+  max-width: 60px;
+  max-height: 60px;
+  margin-left: 5px;
+}

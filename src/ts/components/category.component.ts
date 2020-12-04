@@ -4,6 +4,7 @@ import SELECTORS from '../constants/selectors.const';
 import CardComponent from './card.component';
 import clearContent from '../helpers/content-clear';
 import chooseActiveLink from '../helpers/active-category';
+import { header } from '../index';
 
 const cards: CardComponent = new CardComponent();
 
@@ -16,24 +17,29 @@ export default class CategoryComponent {
                   <img class="content__category-item-img" src="${img}" alt="${title}">
                   <h3 class="content__category-item-title">${title}</h3>
                 </div>
+                <div class="content__category-play">
+                  <span>Play mode</span>
+                </div>
               </div>`;
     };
 
     for (let i = 0; i < CATEGORIES_DATA.length; i++) {
-      SELECTORS.DOM.content?.insertAdjacentHTML(
+      SELECTORS.dom.content?.insertAdjacentHTML(
         'beforeend',
         setupCard(CATEGORIES_DATA[i].img, CATEGORIES_DATA[i].title, CATEGORIES_DATA[i].id),
       );
     }
 
-    SELECTORS.DOM.content.querySelectorAll(SELECTORS.DOM.categoriesStr).forEach((el: HTMLElement): any => {
-      el.addEventListener('click', () => {
+    SELECTORS.dom.content.querySelectorAll(SELECTORS.dom.categoriesStr).forEach((el: HTMLElement): any => {
+      el.addEventListener('click', (): void => {
         const category = el.id;
         clearContent();
-        SELECTORS.DOM.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
+        SELECTORS.dom.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
         chooseActiveLink();
-        cards.initCards(CARDS_DATA[category]);
+        cards.initCards(CARDS_DATA[category], category);
       });
     });
+
+    header.setStateStyles();
   };
 }

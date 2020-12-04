@@ -20,7 +20,7 @@ export default class AssetsData {
     };
   };
 
-  public importSounds = (): any => {
+  public importCardSounds = (): any => {
     return {
       actions: this.importAll(require.context('../../assets/audio/actions', false, /\.(ogg|mp3|wav|mpe?g)$/)),
       animals: this.importAll(require.context('../../assets/audio/animals', false, /\.(ogg|mp3|wav|mpe?g)$/)),
@@ -30,6 +30,12 @@ export default class AssetsData {
       food: this.importAll(require.context('../../assets/audio/food', false, /\.(ogg|mp3|wav|mpe?g)$/)),
       home: this.importAll(require.context('../../assets/audio/home', false, /\.(ogg|mp3|wav|mpe?g)$/)),
       nature: this.importAll(require.context('../../assets/audio/nature', false, /\.(ogg|mp3|wav|mpe?g)$/)),
+    };
+  };
+
+  public importGameSounds = (): any => {
+    return {
+      game: this.importAll(require.context('../../assets/audio/game', false, /\.(ogg|mp3|wav|mpe?g)$/)),
     };
   };
 }

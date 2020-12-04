@@ -3,6 +3,7 @@ import CARDS_DATA from '../data/cards.data';
 import CardComponent from './card.component';
 import clearContent from '../helpers/content-clear';
 import chooseActiveLink from '../helpers/active-category';
+import STATE from '../constants/state.const';
 import { categories } from '../index';
 
 const cards: CardComponent = new CardComponent();
@@ -36,7 +37,7 @@ export default class HeaderComponent {
       ];
     };
 
-    SELECTORS.DOM.menu?.animate(chooseAnimeDirection(), {
+    SELECTORS.dom.menu?.animate(chooseAnimeDirection(), {
       duration: this.animationSetup.duration,
       easing: this.animationSetup.easing,
       iterations: this.animationSetup.iterations,
@@ -44,50 +45,82 @@ export default class HeaderComponent {
   };
 
   private openMenu = (): void => {
-    SELECTORS.DOM.menu?.classList.remove(SELECTORS.styles.hiddenPhys);
+    SELECTORS.dom.menu?.classList.remove(SELECTORS.styles.hiddenPhys);
     this.activateAnime();
-    SELECTORS.DOM.openMenuBtn?.classList.add(SELECTORS.styles.hiddenVisual);
-    SELECTORS.DOM.page?.classList.add(SELECTORS.styles.blackout);
-    SELECTORS.DOM.body?.classList.add(SELECTORS.styles.scrollOff);
+    SELECTORS.dom.openMenuBtn?.classList.add(SELECTORS.styles.hiddenVisual);
+    SELECTORS.dom.page?.classList.add(SELECTORS.styles.blackout);
+    SELECTORS.dom.body?.classList.add(SELECTORS.styles.scrollOff);
   };
 
   private closeMenu = (): void => {
     this.activateAnime(true);
-    SELECTORS.DOM.openMenuBtn?.classList.remove(SELECTORS.styles.hiddenVisual);
-    SELECTORS.DOM.page?.classList.remove(SELECTORS.styles.blackout);
-    SELECTORS.DOM.body?.classList.remove(SELECTORS.styles.scrollOff);
+    SELECTORS.dom.openMenuBtn?.classList.remove(SELECTORS.styles.hiddenVisual);
+    SELECTORS.dom.page?.classList.remove(SELECTORS.styles.blackout);
+    SELECTORS.dom.body?.classList.remove(SELECTORS.styles.scrollOff);
 
     setTimeout(() => {
-      SELECTORS.DOM.menu?.classList.add(SELECTORS.styles.hiddenPhys);
+      SELECTORS.dom.menu?.classList.add(SELECTORS.styles.hiddenPhys);
     }, this.animationSetup.duration - 10);
   };
 
-  public initHeader = (): void => {
-    SELECTORS.DOM.openMenuBtn?.addEventListener('click', this.openMenu);
-    SELECTORS.DOM.closeMenuBtn?.addEventListener('click', this.closeMenu);
+  public setStateStyles = (): void => {
+    SELECTORS.dom.content.querySelectorAll(SELECTORS.dom.categoriesStr).forEach((el: HTMLElement): void => {
+      if (STATE.playMode) {
+        el.classList.add(SELECTORS.styles.categoryPlayMode);
+      } else {
+        el.classList.remove(SELECTORS.styles.categoryPlayMode);
+      }
+    });
 
-    SELECTORS.DOM.menuBtn.forEach((el: HTMLElement): any => {
-      el.addEventListener('click', () => {
-        const category: string = el.innerHTML.toLowerCase();
+    SELECTORS.dom.content.querySelectorAll(SELECTORS.dom.topicItemStr).forEach((el: HTMLElement): void => {
+      if (STATE.playMode) {
+        el.classList.add(SELECTORS.styles.topicPlayMode);
+      } else {
+        el.classList.remove(SELECTORS.styles.topicPlayMode);
+      }
+    });
+
+    if (STATE.playMode && SELECTORS.dom.contentTitle.textContent.toLowerCase() !== SELECTORS.strings.mainPage) {
+      SELECTORS.dom.contentInfoBtn.classList.add(SELECTORS.styles.contentInfoBtnActive);
+    } else {
+      SELECTORS.dom.contentInfoBtn.classList.remove(SELECTORS.styles.contentInfoBtnActive);
+    }
+  };
+
+  private setState = (): void => {
+    STATE.playMode = !STATE.playMode;
+    this.setStateStyles();
+  };
+
+  public initHeader = (): void => {
+    SELECTORS.dom.openMenuBtn?.addEventListener('click', this.openMenu);
+    SELECTORS.dom.closeMenuBtn?.addEventListener('click', this.closeMenu);
+
+    SELECTORS.dom.menuBtn.forEach((el: HTMLElement): any => {
+      el.addEventListener('click', (): void => {
+        const category: any = el.hasAttribute(SELECTORS.attr.category) ? el.getAttribute(SELECTORS.attr.category) : '';
         clearContent();
-        if (el.id === 'main-page') {
+        if (el.getAttribute(SELECTORS.attr.category) === SELECTORS.strings.mainPage) {
           categories.initCategories();
-          SELECTORS.DOM.contentTitle.textContent = 'Main page';
+          SELECTORS.dom.contentTitle.textContent = SELECTORS.strings.mainPage;
         } else {
-          SELECTORS.DOM.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
-          cards.initCards(CARDS_DATA[category]);
+          SELECTORS.dom.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
+          cards.initCards(CARDS_DATA[category], category);
         }
         chooseActiveLink();
+        this.setStateStyles();
         this.closeMenu();
       });
     });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', (e): void => {
       const { target } = e;
 
-      if (SELECTORS.DOM.page?.classList.contains(SELECTORS.styles.blackout) && target === SELECTORS.DOM.page) {
+      if (SELECTORS.dom.page?.classList.contains(SELECTORS.styles.blackout) && target === SELECTORS.dom.page) {
         this.closeMenu();
       }
     });
+
+    SELECTORS.dom.toggleMode.addEventListener('click', this.setState);
   };
 }

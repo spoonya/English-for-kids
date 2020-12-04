@@ -1,12 +1,12 @@
 import SELECTORS from '../constants/selectors.const';
 
 const chooseActiveLink = (): void => {
-  SELECTORS.DOM.menuBtn.forEach((el: HTMLElement) => {
+  SELECTORS.dom.menuBtn.forEach((el: HTMLElement) => {
     if (el.classList.contains(SELECTORS.styles.activeLink)) {
       el.classList.remove(SELECTORS.styles.activeLink);
     }
 
-    if (el.textContent?.toLowerCase() === SELECTORS.DOM.contentTitle.textContent.toLowerCase()) {
+    if (el.getAttribute(SELECTORS.attr.category) === SELECTORS.dom.contentTitle.textContent.toLowerCase()) {
       el.classList.add(SELECTORS.styles.activeLink);
     }
   });

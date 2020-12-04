@@ -11,10 +11,17 @@
 
   cursor: pointer;
   transition: transform .15s ease-in-out, box-shadow .15s ease-in-out;
+  animation: content-fade-in .25s linear;
 
   border-radius: 5px;
   background-color: darken($color-primary-light, 3);
   box-shadow: 0 0 10px rgba(0, 0, 0, .35);
+
+  &--active {
+    .content__category-play {
+      opacity: 1;
+    }
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -42,7 +49,7 @@
     height: 100%;
     min-height: 15rem;
     max-height: 15rem;
-    margin: 7rem auto 0;
+    margin: 7rem auto 1.5rem;
 
     border: 8px solid darken($color-primary-light, 3);
     border-radius: 50%;
@@ -53,11 +60,25 @@
   &-title {
     font-weight: 600;
 
-    padding: 3rem;
-
     text-align: center;
     text-transform: uppercase;
 
     color: $color-primary-dark;
   }
+}
+
+.content__category-play {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  padding: 5px;
+
+  transition: opacity .2s linear;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  color: $color-primary-light;
+  border-radius: 5px 5px 0 0;
+  background-color: $color-secondary-light;
 }

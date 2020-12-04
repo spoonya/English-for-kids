@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/1b5261cdae.js" crossorigin="anonymous"></script>
   <title>English for kids</title>
 </head>
 
@@ -22,21 +23,77 @@
             <button class="header__close" data-menu-close>
             </button>
             <ul class="header__menu-list">
-              <li class="header__menu-item"><button class="header__menu-link header__menu-link--active" id="main-page">main page</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">actions</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">animals</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">body</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">clothes</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">emotions</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">food</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">home</button></li>
-              <li class="header__menu-item"><button class="header__menu-link">nature</button></li>
+              <li class="header__menu-item">
+                <button class="header__menu-link header__menu-link--active" data-category="main page">
+                  <i class="header__menu-link-icon fas fa-list-ul"></i>
+                  <span class="header__menu-link-txt">Main page</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="actions">
+                  <i class="header__menu-link-icon fas fa-child"></i>
+                  <span class="header__menu-link-txt">Actions</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="animals">
+                  <i class="header__menu-link-icon fas fa-paw"></i>
+                  <span class="header__menu-link-txt">Animals</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="body">
+                  <i class="header__menu-link-icon fas fa-lungs"></i>
+                  <span class="header__menu-link-txt">Body</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="clothes">
+                  <i class="header__menu-link-icon fas fa-tshirt"></i>
+                  <span class="header__menu-link-txt">Clothes</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="emotions">
+                  <i class="header__menu-link-icon fas fa-grin-alt"></i>
+                  <span class="header__menu-link-txt">Emotions</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="food">
+                  <i class="header__menu-link-icon fas fa-apple-alt"></i>
+                  <span class="header__menu-link-txt">Food</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="home">
+                  <i class="header__menu-link-icon fas fa-home"></i>
+                  <span class="header__menu-link-txt">Home</span>
+                </button>
+              </li>
+
+              <li class="header__menu-item">
+                <button class="header__menu-link" data-category="nature">
+                  <i class="header__menu-link-icon fas fa-tree"></i>
+                  <span class="header__menu-link-txt">Nature</span>
+                </button>
+              </li>
             </ul>
           </nav>
           <h1 class="header__logo"> <span>English</span> for kids</h1>
           <label class="header__toggle">
-            <input type="checkbox" checked="checked">
-            <span class="header__control"></span>
+            <input class="header__toggle-mode" type="checkbox" checked>
+            <div class="header__control">
+              <span class="header__control-txt header__control-txt--train">Train</span>
+              <span class="header__control-txt header__control-txt--play">Play</span>
+            </div>
           </label>
         </div>
       </div>
@@ -44,12 +101,29 @@
 
     <main class="content">
       <div class="container">
-        <h2 class="content__title">Main page</h2>
+        <div class="content__info">
+          <h2 class="content__info-title">Main page</h2>
+          <div class="content__info-answers">
+            <!-- <i class="content__info-score content__info-score--mistake fas fa-star"></i>
+            <i class="content__info-score fas fa-star"></i> -->
+          </div>
+          <button class="content__info-btn" title="Start game"><i class="content__info-btn-icon fas fa-play"></i></button>
+          <!-- <i class="fas fa-redo-alt"></i> -->
+        </div>
         <div class="content__inner">
         </div>
       </div>
     </main>
   </div>
+  <footer class="footer">
+    <address class="footer__info">
+      &copy; 2020
+      <a class="footer__link" href="https://github.com/spoonya">Siarhei Punia</a> for
+      <a href="https://rs.school/js/">
+        <img class="footer__img" src="assets/img/rss.png" alt="The Rolling Scopes School">
+      </a>
+    </address>
+  </footer>
 </body>
 
 </html>

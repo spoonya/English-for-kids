@@ -1,7 +1,7 @@
 import AssetsData from './assets.data';
 
 const images = new AssetsData().importImages();
-const sounds = new AssetsData().importSounds();
+const sounds = new AssetsData().importCardSounds();
 
 const CARDS_DATA: any = {
   actions: [
@@ -213,7 +213,7 @@ const CARDS_DATA: any = {
     },
     {
       word: 'happy',
-      translation: 'счастлиывый',
+      translation: 'счастливый',
       img: images.emotions['happy.jpg'],
       audioSrc: sounds.emotions['happy.mp3'],
     },
@@ -309,7 +309,7 @@ const CARDS_DATA: any = {
       word: 'bathroom',
       translation: 'ванная',
       img: images.home['bathroom.jpg'],
-      audioSrc: sounds.home['potato.mp3'],
+      audioSrc: sounds.home['bathroom.mp3'],
     },
     {
       word: 'bed',
