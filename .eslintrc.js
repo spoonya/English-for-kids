@@ -42,5 +42,6 @@ module.exports = {
       },
     ],
     'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
+    'no-param-reassign': 0,
   },
 };

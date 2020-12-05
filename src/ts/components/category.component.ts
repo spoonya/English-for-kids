@@ -10,6 +10,10 @@ const cards: CardComponent = new CardComponent();
 
 export default class CategoryComponent {
   public initCategories = (): void => {
+    SELECTORS.dom.contentTitle.textContent = SELECTORS.text.mainPage;
+    clearContent();
+    chooseActiveLink();
+
     const setupCard = (img: string, title: string, id: string): string => {
       return `<div class="content__category-item" id="${id}">
                 <div class="content__category-item-top"></div>
@@ -18,7 +22,7 @@ export default class CategoryComponent {
                   <h3 class="content__category-item-title">${title}</h3>
                 </div>
                 <div class="content__category-play">
-                  <span>Play mode</span>
+                  <span>Play Mode</span>
                 </div>
               </div>`;
     };

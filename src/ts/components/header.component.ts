@@ -4,7 +4,7 @@ import CardComponent from './card.component';
 import clearContent from '../helpers/content-clear';
 import chooseActiveLink from '../helpers/active-category';
 import STATE from '../constants/state.const';
-import { categories } from '../index';
+import { categories, playBtn, playMode } from '../index';
 
 const cards: CardComponent = new CardComponent();
 
@@ -80,15 +80,18 @@ export default class HeaderComponent {
       }
     });
 
-    if (STATE.playMode && SELECTORS.dom.contentTitle.textContent.toLowerCase() !== SELECTORS.strings.mainPage) {
+    if (STATE.playMode && SELECTORS.dom.contentTitle.textContent.toLowerCase() !== SELECTORS.text.mainPage) {
       SELECTORS.dom.contentInfoBtn.classList.add(SELECTORS.styles.contentInfoBtnActive);
     } else {
       SELECTORS.dom.contentInfoBtn.classList.remove(SELECTORS.styles.contentInfoBtnActive);
     }
+
+    playBtn.resetBtn();
   };
 
   private setState = (): void => {
     STATE.playMode = !STATE.playMode;
+    playMode.resetGame();
     this.setStateStyles();
   };
 
@@ -100,15 +103,16 @@ export default class HeaderComponent {
       el.addEventListener('click', (): void => {
         const category: any = el.hasAttribute(SELECTORS.attr.category) ? el.getAttribute(SELECTORS.attr.category) : '';
         clearContent();
-        if (el.getAttribute(SELECTORS.attr.category) === SELECTORS.strings.mainPage) {
+        if (el.getAttribute(SELECTORS.attr.category) === SELECTORS.text.mainPage) {
           categories.initCategories();
-          SELECTORS.dom.contentTitle.textContent = SELECTORS.strings.mainPage;
+          SELECTORS.dom.contentTitle.textContent = SELECTORS.text.mainPage;
         } else {
           SELECTORS.dom.contentTitle.textContent = Object.keys(CARDS_DATA).find((key) => key === category);
           cards.initCards(CARDS_DATA[category], category);
         }
         chooseActiveLink();
         this.setStateStyles();
+        playMode.resetGame();
         this.closeMenu();
       });
     });

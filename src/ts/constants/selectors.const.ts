@@ -8,7 +8,8 @@ const SELECTORS: any = {
     hiddenPhys: 'hidden-phys',
     rotate: 'content__topic-item--rotated',
     scrollOff: 'scroll-hidden',
-    topicPlayMode: 'content__topic-item--active',
+    topicPlayMode: 'content__topic-item--play',
+    topicItemDisabled: 'content__topic-item--disabled',
     visible: 'visible',
   },
   dom: {
@@ -17,7 +18,9 @@ const SELECTORS: any = {
     cardFrontStr: '.content__topic-item-front',
     closeMenuBtn: document.querySelector('[data-menu-close]'),
     content: document.querySelector('.content__inner'),
+    contentInfoAnswers: document.querySelector('.content__info-answers'),
     contentInfoBtn: document.querySelector('.content__info-btn'),
+    contentInfoBtnIcon: document.querySelector('.content__info-btn-icon'),
     contentTitle: document.querySelector('.content__info-title'),
     openMenuBtn: document.querySelector('[data-menu-open]'),
     linkTxt: '.header__menu-link-txt',
@@ -31,8 +34,12 @@ const SELECTORS: any = {
   attr: {
     category: 'data-category',
   },
-  strings: {
+  text: {
     mainPage: 'main page',
+    playBtn: {
+      start: 'Start game',
+      repeat: 'Repeat word',
+    },
   },
 };
 

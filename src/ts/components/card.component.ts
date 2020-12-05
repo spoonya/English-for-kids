@@ -1,7 +1,7 @@
 import SELECTORS from '../constants/selectors.const';
-import CARDS_DATA from '../data/cards.data';
 import STATE from '../constants/state.const';
-import { header } from '../index';
+import AUDIO_CFG from '../constants/audio-cfg.const';
+import { header, playMode } from '../index';
 
 export default class CardComponent {
   private getParentEl = (btn: HTMLElement | null): HTMLElement | null => {
@@ -29,9 +29,8 @@ export default class CardComponent {
         ? card.getAttribute(SELECTORS.attr.category)
         : '';
       const audio = new Audio();
-      const path = CARDS_DATA[category].find((element: any) => element.word === card?.id).audioSrc;
-      audio.src = path;
-      audio.volume = 0.2;
+      audio.src = AUDIO_CFG.findPath(category, card?.id);
+      audio.volume = AUDIO_CFG.volume;
       audio.play();
     }
   };
@@ -75,8 +74,14 @@ export default class CardComponent {
       });
       card?.addEventListener('mouseleave', (): void => this.showFront(card));
       card?.querySelector(SELECTORS.dom.cardFrontStr).addEventListener('click', (): void => this.playAudio(card));
+      card?.addEventListener('click', (): void => {
+        if (STATE.gameActive && !card.classList.contains(SELECTORS.styles.topicItemDisabled)) {
+          playMode.controlGame(card.id, card);
+        }
+      });
     });
 
     header.setStateStyles();
+    playMode.resetGame();
   };
 }

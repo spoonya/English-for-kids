@@ -11,9 +11,8 @@
 
   &-title {
     font-size: 2.5rem;
-
     text-transform: uppercase;
-
+    width: 100%;
     color: $color-primary-light;
   }
 
@@ -21,9 +20,9 @@
     display: flex;
     overflow: hidden;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
-    width: 70%;
+    width: 75.5%;
   }
 
   &-score {
@@ -66,6 +65,19 @@
 }
 
 .content__inner {
+  @include media-tablet-ls {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-tablet-pt {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-smartphone-pt {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+
   display: grid;
 
   animation: content-fade-in .5s linear;
