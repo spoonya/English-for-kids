@@ -12,7 +12,7 @@
   &-title {
     font-size: 2.5rem;
     text-transform: uppercase;
-    width: 100%;
+    margin-right: 10px;
     color: $color-primary-light;
   }
 
@@ -21,12 +21,12 @@
     overflow: hidden;
     align-items: center;
     justify-content: flex-end;
-
+    margin-right: 20px;
     width: 75.5%;
   }
 
   &-score {
-    font-size: 30px;
+    font-size: 3rem;
 
     margin-right: 3px;
 
@@ -38,13 +38,13 @@
   }
 
   &-btn {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 600;
 
     display: none;
 
-    min-width: 45px;
-    min-height: 45px;
+    min-width: 4.5rem;
+    min-height: 4.5rem;
 
     transition: background-color .15s linear;
     text-transform: uppercase;
@@ -65,6 +65,13 @@
 }
 
 .content__inner {
+  display: grid;
+
+  animation: content-fade-in .5s linear;
+
+  gap: 0 30px;
+  grid-template-columns: repeat(4, 1fr);
+
   @include media-tablet-ls {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -76,12 +83,4 @@
   @include media-smartphone-pt {
     grid-template-columns: repeat(1, 1fr);
   }
-
-
-  display: grid;
-
-  animation: content-fade-in .5s linear;
-
-  gap: 0 30px;
-  grid-template-columns: repeat(4, 1fr);
 }

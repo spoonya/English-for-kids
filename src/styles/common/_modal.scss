@@ -1,0 +1,51 @@
+.modal-bg {
+  background: rgba(41, 41, 41, .4);
+    position: fixed;
+    z-index: 2500;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: visibilty 0s,opacity .1s linear;
+}
+
+.modal {
+  width: 100%;
+  max-width: 320px;
+
+  border-radius: 5px;
+  background-color: $color-primary-light;
+  box-shadow: 0 0 15px #000;
+
+  &__img {
+    object-fit: cover;
+    max-width: 150px;
+    min-width: 150px;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: $color-secondary-light;
+  }
+
+  &__msg {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 1.5rem 0 1rem;
+  }
+}
+
+.modal__inner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 2rem;
+
+  text-shadow: none;
+}

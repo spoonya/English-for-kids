@@ -125,7 +125,7 @@ const config = {
               bypassOnDebug: true,
               mozjpeg: {
                 progressive: true,
-                quality: 75,
+                quality: 85,
               },
               // optipng.enabled: false will disable optipng
               optipng: {
@@ -141,7 +141,7 @@ const config = {
               },
               // the webp option will enable WEBP
               webp: {
-                quality: 75,
+                quality: 70,
               },
             },
           },

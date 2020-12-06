@@ -20,6 +20,12 @@ export default class AssetsData {
     };
   };
 
+  public importModalImages = (): any => {
+    return {
+      modal: this.importAll(require.context('../../assets/img/modal', false, /\.(png|jpe?g|svg|gif)$/)),
+    };
+  };
+
   public importCardSounds = (): any => {
     return {
       actions: this.importAll(require.context('../../assets/audio/actions', false, /\.(ogg|mp3|wav|mpe?g)$/)),

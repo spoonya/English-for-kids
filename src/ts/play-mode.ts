@@ -3,6 +3,7 @@ import SELECTORS from './constants/selectors.const';
 import CARDS_DATA from './data/cards.data';
 import GAME_AUDIO from './constants/game-sounds.const';
 import AUDIO_CFG from './constants/audio-cfg.const';
+import ModalComponent from './components/modal.component';
 import { categories } from './index';
 
 export default class PlayMode {
@@ -78,16 +79,20 @@ export default class PlayMode {
   };
 
   private endGame = (): void => {
-    if (STATE.errors > 0) {
+    const showTime: number = 10000;
+
+    if (STATE.errors > 1) {
       this.playAudio(GAME_AUDIO.failureEnd, AUDIO_CFG.longDelay);
+      new ModalComponent(ModalComponent.alertType.onFailureEnd).showAlert().closeAlert(showTime);
     } else {
       this.playAudio(GAME_AUDIO.successEnd, AUDIO_CFG.longDelay);
+      new ModalComponent(ModalComponent.alertType.onSuccessEnd).showAlert().closeAlert(showTime);
     }
 
     setTimeout((): void => {
       categories.initCategories();
       this.resetGame();
-    }, 7000);
+    }, showTime);
   };
 
   public controlGame = (curWord: string, card: HTMLElement): void => {

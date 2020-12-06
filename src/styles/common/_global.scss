@@ -74,6 +74,10 @@ html {
   font-size: 62.5%;
 
   scroll-behavior: smooth;
+
+  @include media-smartphone-ls {
+    font-size: 50%;
+  }
 }
 
 body {
