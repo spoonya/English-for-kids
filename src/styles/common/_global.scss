@@ -18,6 +18,10 @@ img {
   height: auto;
 }
 
+img[data-src] {
+  opacity: 0;
+}
+
 ul,
 li {
   margin: 0;
