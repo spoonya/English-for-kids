@@ -4,6 +4,7 @@ import SELECTORS from '../constants/selectors.const';
 import CardComponent from './card.component';
 import clearContent from '../helpers/content-clear';
 import chooseActiveLink from '../helpers/active-category';
+import loadLazy from '../helpers/lazy-load';
 import { header } from '../index';
 
 const cards: CardComponent = new CardComponent();
@@ -18,7 +19,7 @@ export default class CategoryComponent {
       return `<div class="content__category-item" id="${id}">
                 <div class="content__category-item-top"></div>
                 <div class="content__category-item-mid">
-                  <img class="content__category-item-img" src="${img}" alt="${title}">
+                  <img class="content__category-item-img" data-src="${img}" alt="${title}">
                   <h3 class="content__category-item-title">${title}</h3>
                 </div>
                 <div class="content__category-play">
@@ -45,5 +46,6 @@ export default class CategoryComponent {
     });
 
     header.setStateStyles();
+    loadLazy();
   };
 }

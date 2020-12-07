@@ -12,6 +12,7 @@
   &-title {
     font-size: 2.5rem;
     text-transform: uppercase;
+    width: 32%;
     margin-right: 10px;
     color: $color-primary-light;
   }
@@ -81,6 +82,7 @@
   }
 
   @include media-smartphone-pt {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, .8fr);
+    justify-content: center;
   }
 }

@@ -24,6 +24,7 @@ const SELECTORS: any = {
     contentTitle: document.querySelector('.content__info-title'),
     openMenuBtn: document.querySelector('[data-menu-open]'),
     linkTxt: '.header__menu-link-txt',
+    lazyImg: 'img[data-src]',
     menu: document.querySelector('.header__menu'),
     menuBtn: document.querySelectorAll('.header__menu-link'),
     page: document.querySelector('.page'),
@@ -33,6 +34,8 @@ const SELECTORS: any = {
   },
   attr: {
     category: 'data-category',
+    dataSrc: 'data-src',
+    src: 'src',
   },
   text: {
     mainPage: 'main page',

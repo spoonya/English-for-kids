@@ -31,7 +31,7 @@ const CARDS_DATA: any = {
     },
     {
       word: 'hug',
-      translation: 'обнять',
+      translation: 'обнимать',
       img: images.actions['hug.jpg'],
       audioSrc: sounds.actions['hug.mp3'],
     },

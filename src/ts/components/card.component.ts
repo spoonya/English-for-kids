@@ -1,6 +1,7 @@
 import SELECTORS from '../constants/selectors.const';
 import STATE from '../constants/state.const';
 import AUDIO_CFG from '../constants/audio-cfg.const';
+import loadLazy from '../helpers/lazy-load';
 import { header, playMode } from '../index';
 
 export default class CardComponent {
@@ -40,7 +41,7 @@ export default class CardComponent {
       return `<div class="content__topic-item" id=${word} data-category=${categoryName}>
                 <div class="content__topic-item-wrapper">
                   <div class="content__topic-item-front">
-                    <img class="content__topic-item-img" src="${img}" alt="${word}" class="content__item-img">
+                    <img class="content__topic-item-img" data-src="${img}" alt="${word}">
                     <div class="content__topic-item-content">
                       <p class="content__topic-item-word">${word}</p>
                       <button class="content__topic-item-btn" title="See translation">
@@ -49,7 +50,7 @@ export default class CardComponent {
                     </div>
                   </div>
                   <div class="content__topic-item-back">
-                    <img class="content__topic-item-img" src="${img}" alt="" class="content__item-img">
+                    <img class="content__topic-item-img" data-src="${img}" alt="${translation}">
                     <div class="content__topic-item-content">
                       <p class="content__topic-item-word">${translation}</p>
                     </div>
@@ -81,6 +82,7 @@ export default class CardComponent {
       });
     });
 
+    loadLazy();
     header.setStateStyles();
     playMode.resetGame();
   };

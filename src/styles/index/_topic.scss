@@ -32,10 +32,16 @@
   }
 
   &-img {
+    opacity: 1;
+
     height: 100%;
     min-height: 200px;
-    transition: transform .15s linear;
+    transition: transform .15s linear, opacity .3s linear;
     object-fit: cover;
+  }
+
+  &-img[data-src] {
+    opacity: 0;
   }
 
   &-icon {

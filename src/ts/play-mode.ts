@@ -79,20 +79,20 @@ export default class PlayMode {
   };
 
   private endGame = (): void => {
-    const showTime: number = 10000;
+    const duration: number = 10000;
 
     if (STATE.errors > 1) {
       this.playAudio(GAME_AUDIO.failureEnd, AUDIO_CFG.longDelay);
-      new ModalComponent(ModalComponent.alertType.onFailureEnd).showAlert().closeAlert(showTime);
+      new ModalComponent(ModalComponent.alertType.onFailureEnd).showAlert().closeAlert(duration);
     } else {
       this.playAudio(GAME_AUDIO.successEnd, AUDIO_CFG.longDelay);
-      new ModalComponent(ModalComponent.alertType.onSuccessEnd).showAlert().closeAlert(showTime);
+      new ModalComponent(ModalComponent.alertType.onSuccessEnd).showAlert().closeAlert(duration);
     }
 
     setTimeout((): void => {
       categories.initCategories();
       this.resetGame();
-    }, showTime);
+    }, duration);
   };
 
   public controlGame = (curWord: string, card: HTMLElement): void => {
